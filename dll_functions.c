@@ -64,13 +64,41 @@ void rm_at_head(DoubleLinkedList *base_node) {
 
 int linked_sum(DoubleLinkedList *root_node) {
 	int sum = 0;
+	DoubleLinkedList *temp;
+        for(temp = root_node; temp != NULL; temp = temp->next) {
+                sum = sum + temp->value;
+        }
+        return sum;
+
 }
 
 float linked_mean(DoubleLinkedList *root_node) {
+        float sum = 0;
+	float track = 0;
+        DoubleLinkedList *temp;
+        for(temp = root_node; temp != NULL; temp = temp->next) {
+                sum = sum + temp->value;
+		track = track + 1;
+        }
+	float mean = (sum/track);
+        return mean;
 }
 
 void linked_scale(DoubleLinkedList *root_node, int a) {
+
+        while(root_node != NULL) {
+                root_node->value = root_node->value * a;
+		root_node = root_node->next;
+        }
+	
+
 }
 
 void linked_decrement(DoubleLinkedList *root_node) {
-}
+
+	while(root_node != NULL) {
+		--root_node->value;
+	      	root_node = root_node->next;	
+	}
+
+       	}
